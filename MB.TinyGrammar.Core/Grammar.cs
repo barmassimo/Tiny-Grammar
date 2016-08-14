@@ -34,8 +34,8 @@ namespace MB.TinyGrammar.Core
 
         public void AddSubstitution(Substitution substitution)
         {
-            if (_substitutions.Any(s => s.Symbol == substitution.Symbol && s.Sentence == substitution.Sentence))
-                throw new TinyGrammarException("Substitution already present.");
+            //if (_substitutions.Any(s => s.Symbol == substitution.Symbol && s.Sentence == substitution.Sentence))
+            //    throw new TinyGrammarException("Substitution already present.");
 
             if (!_symbols.Contains(substitution.Symbol))
                 AddSymbol(substitution.Symbol);

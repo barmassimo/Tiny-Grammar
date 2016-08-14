@@ -52,6 +52,7 @@ namespace MB.TinyGrammar.Core.Test
             Assert.Equal(subject, g.Substitutions[0].Symbol);
         }
 
+        /*
         [Fact]
         public void AddExistingSubstitutionFails()
         {
@@ -69,6 +70,7 @@ namespace MB.TinyGrammar.Core.Test
             Assert.Equal(1, g.Substitutions.Count);
             Assert.Equal(subject, g.Substitutions[0].Symbol);
         }
+        */
 
         [Fact]
         public void SimpleGeneration()
@@ -203,6 +205,29 @@ namespace MB.TinyGrammar.Core.Test
             Assert.True(results.Contains("a dog"));
             Assert.True(results.Contains("a cat"));
             Assert.True(results.Contains("John"));
+        }
+
+
+        [Fact]
+        public void ParseFromFileItalianGrammar()
+        {
+            var parser = new TextParser();
+
+            var text = File.ReadAllText(@"tecnicheseGrammarExample.txt");
+
+            var g = parser.GrammarFromText(text);
+
+            Sentence result;
+
+            var results = new string[200];
+            for (int i = 0; i < 100; i++)
+            {
+                result = g.ApplyAllSubstitutions(new Sentence("{titolo}"));
+                results[i] = result.FinalOutput;
+
+                result = g.ApplyAllSubstitutions(new Sentence("{periodo}."));
+                results[i+100] = result.FinalOutput;
+            }
         }
     }
 }
