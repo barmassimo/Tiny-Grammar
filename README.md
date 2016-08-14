@@ -1,5 +1,5 @@
-SharpTodo
-=========
+TinyGrammar
+===========
 
 A minimalistic implementation of Chomsky's [generative grammar](https://en.wikipedia.org/wiki/Generative_grammar)
 
