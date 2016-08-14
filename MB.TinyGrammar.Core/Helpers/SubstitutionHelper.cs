@@ -11,14 +11,14 @@ namespace MB.TinyGrammar.Core.Helpers
         private const string SymbolStartToken = "{";
         private const string SymbolEndToken = "}";
         private readonly static string UniqueToken = Guid.NewGuid().ToString();
-
-        public string HandleSpecialCharactersForSubstitution(string expression)
+        public static string GetExpressionFromSymbolName(string symbolName)
         {
-            var result = expression;
-            result = result.Replace(SymbolStartToken + SymbolStartToken, "CURLY_BRACKET_BEGIN_" + UniqueToken);
-            result = result.Replace(SymbolEndToken + SymbolEndToken, "CURLY_BRACKET_END_" + UniqueToken);
+            return SymbolStartToken + symbolName + SymbolEndToken;
+        }
 
-            return result;
+        public string CleanupSymbolName(string symbolName)
+        {
+            return symbolName.Replace(SymbolStartToken, string.Empty).Replace(SymbolEndToken, string.Empty);
         }
 
         public IList<string> GetSymbolNames(string expression, string[] namesToSearch)
@@ -33,7 +33,16 @@ namespace MB.TinyGrammar.Core.Helpers
             return result;
         }
 
-        public string UnHandleSpecialCharactersForSubstitution(string expression)
+        public string HandleSpecialCharacters(string expression)
+        {
+            var result = expression;
+            result = result.Replace(SymbolStartToken + SymbolStartToken, "CURLY_BRACKET_BEGIN_" + UniqueToken);
+            result = result.Replace(SymbolEndToken + SymbolEndToken, "CURLY_BRACKET_END_" + UniqueToken);
+
+            return result;
+        }
+
+        public string UnHandleSpecialCharacters(string expression)
         {
             var result = expression;
             result = result.Replace("CURLY_BRACKET_BEGIN_" + UniqueToken, SymbolStartToken + SymbolStartToken);

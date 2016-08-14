@@ -53,24 +53,19 @@ namespace MB.TinyGrammar.Core
             var symbol = Symbols.FirstOrDefault(s => s.Name == symbolName);
             if (symbol == null) symbol = new Symbol(symbolName);
 
-            
             var substitution = Substitutions.FirstOrDefault(s => s.Sentence.Expression == sentenceExpression);
             var sentence = (substitution == null) ? new Sentence(sentenceExpression) : substitution.Sentence;
 
             AddSubstitution(symbol, sentence);
         }
-
-        public Sentence ApplyRandomSubstitution(Sentence sentence, Symbol symbol)
+        public Sentence ApplyAllSubstitutions()
         {
-            var result = new Sentence(sentence.Expression);
+            if (StartSymbol == null)
+                throw new TinyGrammarException("No symbols found.");
 
-            var substitutions = Substitutions.Where(s => s.Symbol == symbol).ToList();
-            if (substitutions.Count == 0)
-                return result;
+            var startSentence = Sentence.FromSymbol(StartSymbol);
 
-            result.ApplySubstitution(substitutions.PickRandom());
-
-            return result;
+            return ApplyAllSubstitutions(startSentence);
         }
 
         public Sentence ApplyAllSubstitutions(Sentence startSentence)
@@ -90,6 +85,19 @@ namespace MB.TinyGrammar.Core
 
                 if (prevExpression == result.Expression) return result;
             }
+        }
+
+        public Sentence ApplyRandomSubstitution(Sentence sentence, Symbol symbol)
+        {
+            var result = new Sentence(sentence.Expression);
+
+            var substitutions = Substitutions.Where(s => s.Symbol == symbol).ToList();
+            if (substitutions.Count == 0)
+                return result;
+
+            result.ApplySubstitution(substitutions.PickRandom());
+
+            return result;
         }
 
         public Sentence ApplySubstitution(Sentence startSentence, Substitution substitution)

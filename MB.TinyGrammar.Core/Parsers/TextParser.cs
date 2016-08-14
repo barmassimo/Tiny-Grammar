@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using MB.TinyGrammar.Core.Helpers;
+
 namespace MB.TinyGrammar.Core.Parsers
 {
     public class TextParser
@@ -11,6 +13,8 @@ namespace MB.TinyGrammar.Core.Parsers
         public Grammar GrammarFromText(string content)
         {
             var result = new Grammar();
+
+            var helper = new SubstitutionHelper();
 
             content = content.Replace("\r\n", "\n");
 
@@ -22,7 +26,7 @@ namespace MB.TinyGrammar.Core.Parsers
                 var symbolName = line.Substring(0, symbolEndPosition);
                 var sentenceExpression = line.Substring(symbolEndPosition + 1, line.Length - 1 - symbolEndPosition);
 
-                result.AddSubstitution(symbolName, sentenceExpression);
+                result.AddSubstitution(helper.CleanupSymbolName(symbolName), sentenceExpression);
             }
 
             return result;

@@ -193,7 +193,16 @@ namespace MB.TinyGrammar.Core.Test
             Assert.Equal(g.Substitutions[3].Sentence.Expression, "a cat");
             Assert.Equal(g.Substitutions[4].Sentence.Expression, "John");
 
+            var results = new string[100];
+            for (int i = 0; i < 100; i++)
+            {
+                var result = g.ApplyAllSubstitutions();
+                results[i] = result.FinalOutput;
+            }
 
+            Assert.True(results.Contains("a dog"));
+            Assert.True(results.Contains("a cat"));
+            Assert.True(results.Contains("John"));
         }
     }
 }

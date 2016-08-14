@@ -27,31 +27,35 @@ namespace MB.TinyGrammar.Core
             Expression = expression;
         }
 
+        public static Sentence FromSymbol(Symbol symbol)
+        {
+            return new Sentence(SubstitutionHelper.GetExpressionFromSymbolName(symbol.Name));
+        }
+
         public IList<string> GetSymbolNames(string[] namesToSearch)
         {
-
-            BeginSubstitution();
+            BeginSpecialCharactersHandling();
             var result = _helper.GetSymbolNames(Expression, namesToSearch);
-            EndSubstitution();
+            EndSpecialCharactersHandling();
 
             return result;
         }
 
         public void ApplySubstitution(Substitution substitution)
         {
-            BeginSubstitution();
+            BeginSpecialCharactersHandling();
             Expression = _helper.Replace(Expression, substitution.Symbol.Name, substitution.Sentence.Expression);
-            EndSubstitution();
+            EndSpecialCharactersHandling();
         }
 
-        private void BeginSubstitution()
+        private void BeginSpecialCharactersHandling()
         {
-            Expression = _helper.HandleSpecialCharactersForSubstitution(Expression);
+            Expression = _helper.HandleSpecialCharacters(Expression);
         }
 
-        private void EndSubstitution()
+        private void EndSpecialCharactersHandling()
         {
-            Expression = _helper.UnHandleSpecialCharactersForSubstitution(Expression);
+            Expression = _helper.UnHandleSpecialCharacters(Expression);
         }
     }
 }
