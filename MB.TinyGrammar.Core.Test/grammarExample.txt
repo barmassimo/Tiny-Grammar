@@ -1,5 +1,19 @@
+# This is a simple grammar definition example.
+# 
+# Each row describes a grammar rule.
+#
+# SUBJECT, ANIMAL and PERSON are grammar symbols (surrounded by curly brackets).
+# "a dog", "a cat" and "John" are constant, terminal symbols.
+#
+# Lines starting with "#" are comments and are ignored.
+#
+# The symbol at the left of the first rule is considered the starting symbol (SUBJECT in the example below).
+#
+# See the test project for some examples of grammar definition files and library usage.
+#
 {SUBJECT}:{ANIMAL}
 {SUBJECT}:{PERSON}
 {ANIMAL}:a dog
 {ANIMAL}:a cat
 {PERSON}:John
+#

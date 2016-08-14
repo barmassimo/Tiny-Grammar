@@ -22,6 +22,9 @@ namespace MB.TinyGrammar.Core.Parsers
 
             foreach (var line in lines)
             {
+                if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
+                    continue;
+
                 var symbolEndPosition = line.IndexOf(":");
                 var symbolName = line.Substring(0, symbolEndPosition);
                 var sentenceExpression = line.Substring(symbolEndPosition + 1, line.Length - 1 - symbolEndPosition);
