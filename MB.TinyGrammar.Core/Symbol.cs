@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace MB.TinyGrammar.Core
 {
-    public class Class1
+    public class Symbol
     {
+        public string Name { get; set; }
+
+        public Symbol(string name)
+        {
+            Name = name;
+        }
     }
 }
