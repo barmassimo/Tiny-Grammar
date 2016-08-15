@@ -1,3 +1,10 @@
+{periodo}:{pre_inizio}{frase}; {pre_durante}{frase}; {pre_fine}{frase}
+{periodo}:{pre_inizio}{frase}; {pre_durante}{frase}
+{periodo}:{pre_inizio}{frase}; {pre_durante}{frase}
+{periodo}:{pre_inizio}{frase}; {pre_fine}{frase}
+{periodo}:{pre_inizio}{frase}; {pre_fine}{frase}
+{periodo}:per {frase_semplice}:<br/> 1. {frase}<br/> 2. {frase}<br/> 3. {frase}
+{periodo}:{frase_semplice}: come {frase_semplice} senza {frase_semplice}
 {pre_durante}:{contesto_periodo_durante}, il sistema dovrà consentire di 
 {pre_durante}:{contesto_periodo_durante}, l'obiettivo sarà 
 {pre_durante}:dovremo, {contesto_periodo_durante}, valutare se 
@@ -359,13 +366,6 @@
 {complemento_opzionale}:
 {negazione_opzionale}:non 
 {negazione_opzionale}:
-{periodo}:{pre_inizio}{frase}; {pre_durante}{frase}; {pre_fine}{frase}
-{periodo}:{pre_inizio}{frase}; {pre_durante}{frase}
-{periodo}:{pre_inizio}{frase}; {pre_durante}{frase}
-{periodo}:{pre_inizio}{frase}; {pre_fine}{frase}
-{periodo}:{pre_inizio}{frase}; {pre_fine}{frase}
-{periodo}:per {frase_semplice}:<br/> 1. {frase}<br/> 2. {frase}<br/> 3. {frase}
-{periodo}:{frase_semplice}: come {frase_semplice} senza {frase_semplice}
 {contesto_periodo_inizio}:innanzitutto
 {contesto_periodo_inizio}:inizialmente
 {contesto_periodo_inizio}:per prima cosa
