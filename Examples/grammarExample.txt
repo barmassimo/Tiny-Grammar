@@ -9,7 +9,7 @@
 #
 # The symbol at the left of the first rule is considered the starting symbol (SUBJECT in the example below).
 #
-# See the test project for some examples of grammar definition files and library usage.
+# See the test project for library usage.
 #
 {SUBJECT}:{ANIMAL}
 {SUBJECT}:{PERSON}

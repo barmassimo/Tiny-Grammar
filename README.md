@@ -3,6 +3,8 @@ TinyGrammar
 
 A minimalistic implementation of Chomsky's [generative grammar](https://en.wikipedia.org/wiki/Generative_grammar)
 
+The generator can be used as a library (no external dependencies) or via command line.
+
 Grammar rules can be added programmaticaly or stored on a text file in a very intuitive format, for example:
 
 ```
@@ -17,7 +19,7 @@ Grammar rules can be added programmaticaly or stored on a text file in a very in
 #
 # The symbol at the left of the first rule is considered the starting symbol (SUBJECT in the example below).
 #
-# See the test project for some examples of grammar definition files and library usage.
+# See the test project for library usage.
 #
 {SUBJECT}:{ANIMAL}
 {SUBJECT}:{PERSON}

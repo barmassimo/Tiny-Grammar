@@ -172,7 +172,7 @@ namespace MB.TinyGrammar.Core.Test
         {
             var parser = new TextParser();
 
-            var text = File.ReadAllText(@"grammarExample.txt");
+            var text = File.ReadAllText(@"../../../Examples/grammarExample.txt");
 
             var g = parser.GrammarFromText(text);
 
@@ -213,7 +213,7 @@ namespace MB.TinyGrammar.Core.Test
         {
             var parser = new TextParser();
 
-            var text = File.ReadAllText(@"tecnicheseGrammarExample.txt");
+            var text = File.ReadAllText(@"../../../Examples/tecnicheseGrammarExample.txt");
 
             var g = parser.GrammarFromText(text);
 
