@@ -10,10 +10,19 @@ Grammar rules can be added programmaticaly or stored on a text file in a very in
 ```
 # This is a simple grammar definition example.
 # 
-# Each row describes a grammar rule.
+# Each row describes a grammar rule, in the form 
+# <SYMBOL>:<EXPRESSION>
 #
-# SUBJECT, ANIMAL and PERSON are grammar symbols (surrounded by curly brackets).
-# "a dog", "a cat" and "John" are constant, terminal symbols.
+# On this file:
+# 1."{SUBJECT}", "{ANIMAL}" and "{PERSON}" are grammar symbols (surrounded by curly brackets).
+# 2. "a dog", "a cat", "John" and "{PERSON}'s dog" are expressions: an expression can be:
+# - a symbol e.g. {ANIMAL}"
+# - a constant e.g. "a cat"
+# - a constant with symbols e.g. "{PERSON}'s dog"
+#
+# You can use some special characters in expressions:
+# - "{{" and "}}" represents the characters "{" and "}"
+# - "\n" represents a newline character
 #
 # Lines starting with "#" are comments and are ignored.
 #
@@ -24,6 +33,7 @@ Grammar rules can be added programmaticaly or stored on a text file in a very in
 {SUBJECT}:{ANIMAL}
 {SUBJECT}:{PERSON}
 {ANIMAL}:a dog
+{ANIMAL}:{PERSON}'s dog
 {ANIMAL}:a cat
 {PERSON}:John
 #

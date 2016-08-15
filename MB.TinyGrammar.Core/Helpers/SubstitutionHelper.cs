@@ -10,6 +10,7 @@ namespace MB.TinyGrammar.Core.Helpers
     {
         private const string SymbolStartToken = "{";
         private const string SymbolEndToken = "}";
+        private const string SymbolNewLine = @"\n";
         private readonly static string UniqueToken = Guid.NewGuid().ToString();
         public static string GetExpressionFromSymbolName(string symbolName)
         {
@@ -57,6 +58,7 @@ namespace MB.TinyGrammar.Core.Helpers
 
             result = result.Replace(SymbolStartToken + SymbolStartToken, SymbolStartToken);
             result = result.Replace(SymbolEndToken + SymbolEndToken, SymbolEndToken);
+            result = result.Replace(SymbolNewLine, "\n");
 
             return result;
         }

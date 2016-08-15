@@ -183,17 +183,19 @@ namespace MB.TinyGrammar.Core.Test
             Assert.Equal(g.Symbols[1].Name, "ANIMAL");
             Assert.Equal(g.Symbols[2].Name, "PERSON");
 
-            Assert.Equal(5, g.Substitutions.Count);
+            Assert.Equal(6, g.Substitutions.Count);
             Assert.Equal(g.Substitutions[0].Symbol, g.Symbols[0]);
             Assert.Equal(g.Substitutions[1].Symbol, g.Symbols[0]);
             Assert.Equal(g.Substitutions[2].Symbol, g.Symbols[1]);
             Assert.Equal(g.Substitutions[3].Symbol, g.Symbols[1]);
-            Assert.Equal(g.Substitutions[4].Symbol, g.Symbols[2]);
+            Assert.Equal(g.Substitutions[4].Symbol, g.Symbols[1]);
+            Assert.Equal(g.Substitutions[5].Symbol, g.Symbols[2]);
             Assert.Equal(g.Substitutions[0].Sentence.Expression, "{ANIMAL}");
             Assert.Equal(g.Substitutions[1].Sentence.Expression, "{PERSON}");
             Assert.Equal(g.Substitutions[2].Sentence.Expression, "a dog");
-            Assert.Equal(g.Substitutions[3].Sentence.Expression, "a cat");
-            Assert.Equal(g.Substitutions[4].Sentence.Expression, "John");
+            Assert.Equal(g.Substitutions[3].Sentence.Expression, "{PERSON}'s dog");
+            Assert.Equal(g.Substitutions[4].Sentence.Expression, "a cat");
+            Assert.Equal(g.Substitutions[5].Sentence.Expression, "John");
 
             var results = new string[100];
             for (int i = 0; i < 100; i++)
@@ -205,6 +207,7 @@ namespace MB.TinyGrammar.Core.Test
             Assert.True(results.Contains("a dog"));
             Assert.True(results.Contains("a cat"));
             Assert.True(results.Contains("John"));
+            Assert.True(results.Contains("John's dog"));
         }
 
 
