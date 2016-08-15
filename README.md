@@ -26,7 +26,7 @@ Grammar rules can be added programmaticaly or stored on a text file in a very in
 #
 # Lines starting with "#" are comments and are ignored.
 #
-# The symbol at the left of the first rule is considered the starting symbol (SUBJECT in the example below).
+# The symbol at the left of the first rule is considered the starting symbol ({SUBJECT} in the example below).
 #
 # See the test project for library usage.
 #
