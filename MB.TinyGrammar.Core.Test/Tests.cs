@@ -107,6 +107,21 @@ namespace MB.TinyGrammar.Core.Test
         }
 
         [Fact]
+        public void SimpleGenerationWithVerticalBar()
+        {
+            var g = new Grammar();
+
+            var substitution = new Substitution(new Symbol("VERTICAL_BAR"), new Sentence("this is a vertical bar: ||."));
+            g.AddSubstitution(substitution);
+
+            var startSentence = new Sentence("A vertical bar test: {VERTICAL_BAR}");
+
+            var result = g.ApplySubstitution(startSentence, substitution);
+
+            Assert.Equal("A vertical bar test: this is a vertical bar: |.", result.FinalOutput);
+        }
+
+        [Fact]
         public void GenerationWithMultipleOption()
         {
             var g = new Grammar();
@@ -193,8 +208,8 @@ namespace MB.TinyGrammar.Core.Test
             Assert.Equal(g.Substitutions[0].Sentence.Expression, "{ANIMAL}");
             Assert.Equal(g.Substitutions[1].Sentence.Expression, "{PERSON}");
             Assert.Equal(g.Substitutions[2].Sentence.Expression, "a dog");
-            Assert.Equal(g.Substitutions[3].Sentence.Expression, "{PERSON}'s dog");
-            Assert.Equal(g.Substitutions[4].Sentence.Expression, "a cat");
+            Assert.Equal(g.Substitutions[3].Sentence.Expression, "a cat");
+            Assert.Equal(g.Substitutions[4].Sentence.Expression, "{PERSON}'s dog");
             Assert.Equal(g.Substitutions[5].Sentence.Expression, "John");
 
             var results = new string[100];

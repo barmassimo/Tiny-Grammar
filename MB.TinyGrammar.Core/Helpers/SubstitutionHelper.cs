@@ -8,10 +8,13 @@ namespace MB.TinyGrammar.Core.Helpers
 {
     class SubstitutionHelper
     {
-        private const string SymbolStartToken = "{";
-        private const string SymbolEndToken = "}";
+        private const string SymbolStartToken = @"{";
+        private const string SymbolEndToken = @"}";
+        private const string SymbolVerticalBar = @"|";
         private const string SymbolNewLine = @"\n";
+
         private readonly static string UniqueToken = Guid.NewGuid().ToString();
+
         public static string GetExpressionFromSymbolName(string symbolName)
         {
             return SymbolStartToken + symbolName + SymbolEndToken;
@@ -39,6 +42,7 @@ namespace MB.TinyGrammar.Core.Helpers
             var result = expression;
             result = result.Replace(SymbolStartToken + SymbolStartToken, "CURLY_BRACKET_BEGIN_" + UniqueToken);
             result = result.Replace(SymbolEndToken + SymbolEndToken, "CURLY_BRACKET_END_" + UniqueToken);
+            result = result.Replace(SymbolVerticalBar + SymbolVerticalBar, "VERTICAL_BAR_" + UniqueToken);
 
             return result;
         }
@@ -48,6 +52,7 @@ namespace MB.TinyGrammar.Core.Helpers
             var result = expression;
             result = result.Replace("CURLY_BRACKET_BEGIN_" + UniqueToken, SymbolStartToken + SymbolStartToken);
             result = result.Replace("CURLY_BRACKET_END_" + UniqueToken, SymbolEndToken + SymbolEndToken);
+            result = result.Replace("VERTICAL_BAR_" + UniqueToken, SymbolVerticalBar + SymbolVerticalBar);
 
             return result;
         }
@@ -58,6 +63,7 @@ namespace MB.TinyGrammar.Core.Helpers
 
             result = result.Replace(SymbolStartToken + SymbolStartToken, SymbolStartToken);
             result = result.Replace(SymbolEndToken + SymbolEndToken, SymbolEndToken);
+            result = result.Replace(SymbolVerticalBar + SymbolVerticalBar, SymbolVerticalBar);
             result = result.Replace(SymbolNewLine, "\n");
 
             return result;
@@ -70,6 +76,11 @@ namespace MB.TinyGrammar.Core.Helpers
             result = result.ReplaceFirst(SymbolStartToken + symbolName + SymbolEndToken, replaceExpression);
 
             return result;
+        }
+
+        public IEnumerable<string> GetAlternativeExpressions(string expression)
+        {
+            return expression.Split(SymbolVerticalBar[0]);
         }
     }
 }

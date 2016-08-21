@@ -29,7 +29,17 @@ namespace MB.TinyGrammar.Core.Parsers
                 var symbolName = line.Substring(0, symbolEndPosition);
                 var sentenceExpression = line.Substring(symbolEndPosition + 1, line.Length - 1 - symbolEndPosition);
 
-                result.AddSubstitution(helper.CleanupSymbolName(symbolName), sentenceExpression);
+                sentenceExpression = helper.HandleSpecialCharacters(sentenceExpression);
+
+                foreach (var altSentenceExpression in helper.GetAlternativeExpressions(sentenceExpression))
+                {
+                    result.AddSubstitution(
+                        helper.CleanupSymbolName(symbolName), 
+                        helper.UnHandleSpecialCharacters(altSentenceExpression)
+                       );
+                }
+
+                
             }
 
             return result;
