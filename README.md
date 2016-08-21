@@ -5,7 +5,7 @@ A minimalistic implementation of Chomsky's [generative grammar](https://en.wikip
 
 The generator can be used as a library (no external dependencies) or via command line.
 
-Grammar rules can be added programmaticaly or stored on a text file in a very intuitive format (here's an example)  [an example](examples/grammarExample.txt)
+Grammar rules can be added programmaticaly or stored on a text file in a very intuitive format (here's an example)  [an example](Examples/grammarExample.txt)
 
 ## Live example
 
