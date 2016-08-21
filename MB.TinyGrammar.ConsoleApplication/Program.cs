@@ -32,7 +32,7 @@ namespace MB.TinyGrammar.ConsoleApplication
 
                     if (startExpression != null)
                     {
-                        Usage("Error: start expression defined more than once");
+                        Usage("Error: start expression defined more than once.");
                         return;
                     }
 
@@ -65,12 +65,22 @@ namespace MB.TinyGrammar.ConsoleApplication
             }
             catch (Exception ex)
             {
-                Usage("File reading error: " + ex.Message);
+                Usage(string.Format("Grammar file reading error: {0}", ex.Message));
                 return;
             }
 
             var parser = new TextParser();
-            var g = parser.GrammarFromText(text);
+            Grammar g;
+
+            try
+            {
+                g = parser.GrammarFromText(text);
+            }
+            catch (TinyGrammarException ex)
+            {
+                Usage(string.Format("Grammar file parsing error: {0}", ex.Message));
+                return;
+            }
 
             Sentence result;
 

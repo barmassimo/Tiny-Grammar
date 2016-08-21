@@ -20,10 +20,17 @@ namespace MB.TinyGrammar.Core.Parsers
 
             var lines = content.Split('\n');
 
+            var lineCount = 0;
+
             foreach (var line in lines)
             {
+                lineCount++;
+
                 if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
                     continue;
+
+                if (!line.Contains(":"))
+                    throw new TinyGrammarException(string.Format("Error on line {0}: missing \":\".", lineCount));
 
                 var symbolEndPosition = line.IndexOf(":");
                 var symbolName = line.Substring(0, symbolEndPosition);
