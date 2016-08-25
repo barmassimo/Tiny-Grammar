@@ -1,26 +1,30 @@
 TinyGrammar
 ===========
 
-A minimalistic implementation of Chomsky's [generative grammar](https://en.wikipedia.org/wiki/Generative_grammar)
+TinyGrammar is a minimalistic implementation of Chomsky's [generative grammar](https://en.wikipedia.org/wiki/Generative_grammar).
 
-The generator can be used as a library (no external dependencies) or via command line.
+The generator creates random sentences starting from a grammar definition; it can be used as a library or via command line.
 
-Grammar rules can be added programmaticaly or stored on a text file in a very intuitive format - [here's an example](Examples/grammarExample.txt)
+Grammar rules can be added programmaticaly or stored on a text file in a very intuitive format - [here's an example](Examples/grammarExample.txt).
 
-## Live example
+## Live examples
 
-See [my site](http://massimobarbieri.it/it/Tecnichese) for a funny nonsense-tecnical Italian sentence generator
+I used TinyGrammar for two generators, you can try them on my site:
 
-I'm working also on a generator for the "Live Coding Music Synth" [Sonic Pi](http://sonic-pi.net) (a working but limited [grammar example](Examples/sonicPiGrammarExample.txt) is included)
+* [Tecnichese generator](http://massimobarbieri.it/it/Tecnichese) is a funny nonsense-technical Italian sentence generator
+
+* [Sonic Pi nonsense music generator](http://massimobarbieri.it/en/SonicPiGenerator) is a generator of code for [Sonic Pi](http://sonic-pi.net), the "Live Coding Music Synth" created by Sam Aaron.
+
+Both grammar definitions are included in the Examples folder.
 
 Copyright (C) [Massimo Barbieri](http://www.massimobarbieri.it) 
 
 ## Environment
 
 * .NET Framework / C#
-* XUnit for testing
+* XUnit
+* No external dependencies
 
 ## License
 
 GNU GENERAL PUBLIC LICENSE V 3
-
