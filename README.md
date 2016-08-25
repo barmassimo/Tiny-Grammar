@@ -17,8 +17,6 @@ I used TinyGrammar for two generators, you can try them on my site:
 
 Both grammar definitions are included in the Examples folder.
 
-Copyright (C) [Massimo Barbieri](http://www.massimobarbieri.it) 
-
 ## Environment
 
 * .NET Framework / C#
@@ -28,3 +26,5 @@ Copyright (C) [Massimo Barbieri](http://www.massimobarbieri.it)
 ## License
 
 GNU GENERAL PUBLIC LICENSE V 3
+
+Copyright (C) [Massimo Barbieri](http://www.massimobarbieri.it) 
