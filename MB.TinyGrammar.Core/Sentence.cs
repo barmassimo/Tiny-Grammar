@@ -16,7 +16,7 @@ namespace MB.TinyGrammar.Core
 
         public string FinalOutput { get
             {
-                return _helper.GetFinalOutput(Expression);
+                return _helper.GetFinalOutput(_helper.UnHandleSpecialCharacters(Expression));
             }
         }
 
@@ -24,7 +24,7 @@ namespace MB.TinyGrammar.Core
         {
             _helper = new SubstitutionHelper();
 
-            Expression = expression;
+            Expression = _helper.HandleSpecialCharacters(expression);
         }
 
         public static Sentence FromSymbol(Symbol symbol)
@@ -34,28 +34,12 @@ namespace MB.TinyGrammar.Core
 
         public IList<string> GetSymbolNames(string[] namesToSearch)
         {
-            BeginSpecialCharactersHandling();
-            var result = _helper.GetSymbolNames(Expression, namesToSearch);
-            EndSpecialCharactersHandling();
-
-            return result;
+            return _helper.GetSymbolNames(Expression, namesToSearch);
         }
 
         public void ApplySubstitution(Substitution substitution)
         {
-            BeginSpecialCharactersHandling();
             Expression = _helper.Replace(Expression, substitution.Symbol.Name, substitution.Sentence.Expression);
-            EndSpecialCharactersHandling();
-        }
-
-        private void BeginSpecialCharactersHandling()
-        {
-            Expression = _helper.HandleSpecialCharacters(Expression);
-        }
-
-        private void EndSpecialCharactersHandling()
-        {
-            Expression = _helper.UnHandleSpecialCharacters(Expression);
         }
     }
 }

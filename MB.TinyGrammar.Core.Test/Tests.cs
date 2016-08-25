@@ -90,7 +90,7 @@ namespace MB.TinyGrammar.Core.Test
         }
 
         [Fact]
-        public void SimpleGenerationWithBracket()
+        public void SimpleGenerationWithBrace()
         {
             var g = new Grammar();
 
@@ -99,11 +99,28 @@ namespace MB.TinyGrammar.Core.Test
             var substitution = new Substitution(subject, new Sentence("John"));
             g.AddSubstitution(substitution);
 
-            var startSentence = new Sentence("{SUBJECT} is a subject {{bracket test: {{SUBJECT}}, {{HELLO!}}}}.");
+            var startSentence = new Sentence("{SUBJECT} is a subject {{brace test: {{SUBJECT}}, {{HELLO!}}}}.");
 
             var result = g.ApplySubstitution(startSentence, substitution);
 
-            Assert.Equal("John is a subject {bracket test: {SUBJECT}, {HELLO!}}.", result.FinalOutput);
+            Assert.Equal("John is a subject {brace test: {SUBJECT}, {HELLO!}}.", result.FinalOutput);
+        }
+
+        [Fact]
+        public void SimpleGenerationWithBrace2()
+        {
+            var g = new Grammar();
+
+            var subject = new Symbol("SUBJECT");
+
+            var substitution = new Substitution(subject, new Sentence("John"));
+            g.AddSubstitution(substitution);
+
+            var startSentence = new Sentence("{{SUBJECT}} is a symbol, {{ is a brace.");
+
+            var result = g.ApplySubstitution(startSentence, substitution);
+
+            Assert.Equal("{SUBJECT} is a symbol, { is a brace.", result.FinalOutput);
         }
 
         [Fact]

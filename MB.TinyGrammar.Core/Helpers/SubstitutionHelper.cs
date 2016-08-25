@@ -40,8 +40,8 @@ namespace MB.TinyGrammar.Core.Helpers
         public string HandleSpecialCharacters(string expression)
         {
             var result = expression;
-            result = result.Replace(SymbolStartToken + SymbolStartToken, "CURLY_BRACKET_BEGIN_" + UniqueToken);
-            result = result.Replace(SymbolEndToken + SymbolEndToken, "CURLY_BRACKET_END_" + UniqueToken);
+            result = result.Replace(SymbolStartToken + SymbolStartToken, "BRACE_BEGIN_" + UniqueToken);
+            result = result.Replace(SymbolEndToken + SymbolEndToken, "BRACE_END_" + UniqueToken);
             result = result.Replace(SymbolVerticalBar + SymbolVerticalBar, "VERTICAL_BAR_" + UniqueToken);
 
             return result;
@@ -50,8 +50,8 @@ namespace MB.TinyGrammar.Core.Helpers
         public string UnHandleSpecialCharacters(string expression)
         {
             var result = expression;
-            result = result.Replace("CURLY_BRACKET_BEGIN_" + UniqueToken, SymbolStartToken + SymbolStartToken);
-            result = result.Replace("CURLY_BRACKET_END_" + UniqueToken, SymbolEndToken + SymbolEndToken);
+            result = result.Replace("BRACE_BEGIN_" + UniqueToken, SymbolStartToken + SymbolStartToken);
+            result = result.Replace("BRACE_END_" + UniqueToken, SymbolEndToken + SymbolEndToken);
             result = result.Replace("VERTICAL_BAR_" + UniqueToken, SymbolVerticalBar + SymbolVerticalBar);
 
             return result;
