@@ -8,23 +8,24 @@
 {INITIAL_SETUP}:use_debug false\nuse_bpm {INT_4_7}0\n{RANDOM_SEED}song_scale = :{SCALE}\nsong_note = :{NOTE}{INT_1_4}\n\n
 {GLOBAL_FX}:with_fx :compressor do # global FX\n\n
 {GLOBAL_FX_END}:\nend # global FX\n
-{LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}\n{LIVE_LOOP_SEQUENCE}
-{LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}\n{LIVE_LOOP_SEQUENCE}
-{LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}\n{LIVE_LOOP_SEQUENCE}
 {LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}
-#{LIVE_LOOP_SEQUENCE}:{LIVE_LOOP_TEMPLATE_BD}
-#{LIVE_LOOP_TEMPLATE_BD}:# live loop start\nlive_loop :loop_bd_{DIGITS} do\nsample :bd_haus, amp: 2\nsleep 0.5\nend
-{LIVE_LOOP_MAIN}:# main live loop start\nlive_loop :loop_main do\n{RANDOM_SEED}{PLAY}\n{SLEEP_MAIN}\nend\n\n
+{LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}\n{LIVE_LOOP_SEQUENCE}
+{LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}\n{LIVE_LOOP_SEQUENCE}
+{LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}\n{LIVE_LOOP_SEQUENCE}
+{LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}\n{LIVE_LOOP_SEQUENCE}
+{LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}\n{LIVE_LOOP_SEQUENCE}
+{LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}\n{LIVE_LOOP_SEQUENCE}
+{LIVE_LOOP_MAIN}:# main live loop start\nlive_loop :loop_main do\n{SLEEP_MAIN} # empty loop used for sync\nend\n\n
 {LIVE_LOOP}:# live loop start\nlive_loop :loop_{DIGITS} do\nsync :loop_main\n{RANDOM_SEED}{PLAY_SLEEP}\nend\n
 {RANDOM_SEED}:use_random_seed {INT+}{INT}{INT}{INT}{INT}\n
-{PLAY_SLEEP}:{PLAY}\n{SLEEP}|{SLEEP}\n{PLAY}|{PLAY_SLEEP}\n\n{PLAY_SLEEP}
+{PLAY_SLEEP}:{POW_2}.times do\n{PLAY}\n{SLEEP_SHORT}\nend\n
+{PLAY_SLEEP}:{POW_2}.times do\n{SLEEP_SHORT}\n{PLAY}\nend\n
+{PLAY_SLEEP}:{PLAY_SLEEP}\n\n{PLAY_SLEEP}
 {PLAY}:with_fx :{FX} do\n{PLAY}\nend
-{PLAY}:{POW_2}.times do\n{PLAY}\n{SLEEP_SHORT}\nend
 {PLAY}:sample :{SAMPLE}
 {PLAY}:s = (scale song_note, song_scale, num_octaves: {INT_1_4}).take({POW_2})\nsynth :{SYNTH}, note: s.choose{SYNTH_OPTIONS} if rand > 0.{INT_1_4}
-#{PLAY}:s = (scale song_note, song_scale, num_octaves: {INT_1_4}).take({POW_2})\nplay_pattern_timed s.shuffle, {BPM_FRACTION_SEQUENCE}
-#{PLAY}:{PLAY}\n{PLAY}|synth :{SYNTH}, note: {INT_4_7}{INT}{PLAY_OPT}
-{SCALE}:diatonic|ionian|major|dorian|phrygian|lydian|mixolydian|aeolian|minor|locrian|hex_major6|hex_dorian|hex_phrygian|hex_major7|hex_sus|hex_aeolian|minor_pentatonic|yu|major_pentatonic|gong|egyptian|shang|jiao|zhi|ritusen|whole_tone|whole|chromatic|harmonic_minor|melodic_minor_asc|hungarian_minor|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|super_locrian|hirajoshi|kumoi|neapolitan_major|bartok|bhairav|locrian_major|ahirbhairav|enigmatic|neapolitan_minor|pelog|augmented2|scriabin|harmonic_major|melodic_minor_desc|romanian_minor|hindu|iwato|melodic_minor|diminished2|marva|melodic_major|indian|spanish|prometheus|diminished|todi|leading_whole|augmented|purvi|chinese|lydian_minor
+{SCALE}:minor_pentatonic|major_pentatonic|{SCALE_LESS_FREQUENT}
+{SCALE_LESS_FREQUENT}:minor|major|diatonic|ionian|major|dorian|phrygian|lydian|mixolydian|aeolian|minor|locrian|hex_major6|hex_dorian|hex_phrygian|hex_major7|hex_sus|hex_aeolian|minor_pentatonic|yu|major_pentatonic|gong|egyptian|shang|jiao|zhi|ritusen|whole_tone|whole|chromatic|harmonic_minor|melodic_minor_asc|hungarian_minor|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|super_locrian|hirajoshi|kumoi|neapolitan_major|bartok|bhairav|locrian_major|ahirbhairav|enigmatic|neapolitan_minor|pelog|augmented2|scriabin|harmonic_major|melodic_minor_desc|romanian_minor|hindu|iwato|melodic_minor|diminished2|marva|melodic_major|indian|spanish|prometheus|diminished|todi|leading_whole|augmented|purvi|chinese|lydian_minor
 {SAMPLE}:{SAMPLE_NAME}{SAMPLE_OPTIONS}
 {SAMPLE_NAME}:ambi_dark_woosh|ambi_drone|ambi_glass_hum|ambi_glass_rub|ambi_haunted_hum|ambi_lunar_land|ambi_piano|ambi_soft_buzz|ambi_swoosh|bass_hit_c|bass_voxy_hit_c|bass_dnb_f|bass_thick_c|bass_woodsy_c|bd_808|bd_ada|bd_boom|bd_fat|bd_gas|bd_haus|bd_klub|bd_pure|bd_sone|bd_tek|bd_zome|bd_zum|drum_bass_hard|drum_bass_soft|drum_cymbal_closed|drum_cymbal_hard|drum_cymbal_open|drum_cymbal_pedal|drum_cymbal_soft|drum_heavy_kick|drum_snare_hard|drum_snare_soft|drum_tom_hi_hard|drum_tom_hi_soft|drum_tom_lo_hard|drum_tom_lo_soft|drum_tom_mid_hard|drum_tom_mid_soft|elec_beep|elec_bell|elec_blip|elec_blip2|elec_blup|elec_bong|elec_chime|elec_cymbal|elec_filt_snare|elec_flip|elec_fuzz_tom|elec_hi_snare|elec_hollow_kick|elec_lo_snare|elec_mid_snare|elec_ping|elec_plip|elec_pop|elec_snare|elec_soft_kick|elec_tick|elec_triangle|elec_twang|elec_twip|elec_wood|perc_bell|perc_snap|perc_snap2|sn_dolf|sn_dub|sn_zome
 {SAMPLE_OPTIONS}:{SAMPLE_OPTIONS}{SAMPLE_OPTIONS}| | 
@@ -105,9 +106,8 @@
 {SYNTH}:zawa
 {DIGITS}:{INT}{INT}{INT}{INT}{INT}
 {SLEEP}:sleep {BPM_FRACTION}
-#{SLEEP_SHORT}:sleep 1|sleep 0.5|sleep 0.25|sleep 0.125
 {SLEEP_SHORT}:sleep [1, 0.5, 0.25, 0.125].choose|sleep [0.5, 0.25].choose|sleep [0.5, 0.25, 0.125].choose
-{SLEEP_MAIN}:sleep 1
+{SLEEP_MAIN}:sleep 1|sleep 2|sleep 4
 {BPM_FRACTION}:{BPM_FRACTION_SIMPLE}|{BPM_FRACTION_EXTREME}
 {BPM_FRACTION_SIMPLE}:2|1|0.5
 {BPM_FRACTION_SEQUENCE}:[{BPM_FRACTION_SIMPLE}, {BPM_FRACTION_SIMPLE}{BPM_FRACTION_SEQUENCE_CONTINUE}]
