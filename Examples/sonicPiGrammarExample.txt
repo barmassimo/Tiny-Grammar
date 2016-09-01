@@ -1,11 +1,11 @@
 # This is a grammar definition for Sonic Pi, the "Live Coding Music Synth" created by Sam Aaron.
 # See http://sonic-pi.net for more info.
 #
-# Code generated for Sonic Pi v2.9
+# Code generated for Sonic Pi v2.9+
 #
 {SONG}:{PREAMBLE}{INITIAL_SETUP}{GLOBAL_FX}{LIVE_LOOP_MAIN}{LIVE_LOOP_SEQUENCE}{GLOBAL_FX_END}
-{PREAMBLE}:# This nonsense song is generated randomly by TinyGrammar,\n# a sentence generator created by Massimo Barbieri:\n# https://github.com/barmassimo/Tiny-Grammar\n\n# You can play it with Sonic Pi, the "Live Coding Music Synth"\n# created by Sam Aaron: http://sonic-pi.net\n\n
-{INITIAL_SETUP}:use_debug false\nuse_bpm {INT_4_7}0\n{RANDOM_SEED}song_scale = :{SCALE}\nsong_note = :{NOTE}{INT_1_4}\n\n
+{PREAMBLE}:# This nonsense song is generated randomly by TinyGrammar,\n# a sentence generator created by Massimo Barbieri:\n# https://github.com/barmassimo/Tiny-Grammar (source code)\n# http://massimobarbieri.it/en/SonicPiGenerator (live demo)\n\n# You can play it with Sonic Pi, the "Live Coding Music Synth"\n# created by Sam Aaron: http://sonic-pi.net\n\n
+{INITIAL_SETUP}:use_debug false\nuse_bpm {INT_4_7}0\n{RANDOM_SEED}song_scale = :{SCALE}\nsong_note = :{NOTE}{INT_2_4}\n\n
 {GLOBAL_FX}:with_fx :compressor do # global FX\n\n
 {GLOBAL_FX_END}:\nend # global FX\n
 {LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}
@@ -27,9 +27,9 @@
 {SCALE}:minor_pentatonic|major_pentatonic|{SCALE_LESS_FREQUENT}
 {SCALE_LESS_FREQUENT}:minor|major|diatonic|ionian|major|dorian|phrygian|lydian|mixolydian|aeolian|minor|locrian|hex_major6|hex_dorian|hex_phrygian|hex_major7|hex_sus|hex_aeolian|minor_pentatonic|yu|major_pentatonic|gong|egyptian|shang|jiao|zhi|ritusen|whole_tone|whole|chromatic|harmonic_minor|melodic_minor_asc|hungarian_minor|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|super_locrian|hirajoshi|kumoi|neapolitan_major|bartok|bhairav|locrian_major|ahirbhairav|enigmatic|neapolitan_minor|pelog|augmented2|scriabin|harmonic_major|melodic_minor_desc|romanian_minor|hindu|iwato|melodic_minor|diminished2|marva|melodic_major|indian|spanish|prometheus|diminished|todi|leading_whole|augmented|purvi|chinese|lydian_minor
 {SAMPLE}:{SAMPLE_NAME}{SAMPLE_OPTIONS}
-{SAMPLE_NAME}:ambi_dark_woosh|ambi_drone|ambi_glass_hum|ambi_glass_rub|ambi_haunted_hum|ambi_lunar_land|ambi_piano|ambi_soft_buzz|ambi_swoosh|bass_hit_c|bass_voxy_hit_c|bass_dnb_f|bass_thick_c|bass_woodsy_c|bd_808|bd_ada|bd_boom|bd_fat|bd_gas|bd_haus|bd_klub|bd_pure|bd_sone|bd_tek|bd_zome|bd_zum|drum_bass_hard|drum_bass_soft|drum_cymbal_closed|drum_cymbal_hard|drum_cymbal_open|drum_cymbal_pedal|drum_cymbal_soft|drum_heavy_kick|drum_snare_hard|drum_snare_soft|drum_tom_hi_hard|drum_tom_hi_soft|drum_tom_lo_hard|drum_tom_lo_soft|drum_tom_mid_hard|drum_tom_mid_soft|elec_beep|elec_bell|elec_blip|elec_blip2|elec_blup|elec_bong|elec_chime|elec_cymbal|elec_filt_snare|elec_flip|elec_fuzz_tom|elec_hi_snare|elec_hollow_kick|elec_lo_snare|elec_mid_snare|elec_ping|elec_plip|elec_pop|elec_snare|elec_soft_kick|elec_tick|elec_triangle|elec_twang|elec_twip|elec_wood|perc_bell|perc_snap|perc_snap2|sn_dolf|sn_dub|sn_zome
+{SAMPLE_NAME}:ambi_soft_buzz|bass_hit_c|bd_808|bd_ada|bd_boom|bd_fat|bd_gas|bd_haus|bd_klub|bd_pure|bd_sone|bd_tek|bd_zome|bd_zum|drum_bass_hard|drum_bass_soft|drum_cymbal_closed|drum_cymbal_pedal|drum_cymbal_soft|drum_heavy_kick|drum_snare_soft|drum_tom_lo_soft|drum_tom_mid_soft|elec_beep|elec_blip|elec_blip2|elec_blup|elec_bong|elec_cymbal|elec_filt_snare|elec_flip|elec_fuzz_tom|elec_hi_snare|elec_hollow_kick|elec_lo_snare|elec_mid_snare|elec_ping|elec_plip|elec_pop|elec_snare|elec_soft_kick|elec_tick|elec_triangle|elec_twang|elec_twip|perc_swash|sn_dolf|sn_zome|tabla_dhec|tabla_ghe1|tabla_ke1|tabla_ke2|tabla_ke3|tabla_re|tabla_tas1|tabla_te1|tabla_te2|tabla_te_m|tabla_te_ne|vinyl_hiss
 {SAMPLE_OPTIONS}:{SAMPLE_OPTIONS}{SAMPLE_OPTIONS}| | 
-{SAMPLE_OPTIONS}:, beat_stretch: {INT_1_4}|, rpitch: rand(2)|, norm: [0, 1].choose|, amp: rand(1)|, pan: rdist(1,0)|, decay: rand(1)|, release: rand(2)|, cutoff: rand(130)|, cutoff_attack: rand(1)|, cutoff_decay: rand(1)|, cutoff_release: rand(2)|, res: rand(1)|, rate: [1, 1, 1, -1].choose
+{SAMPLE_OPTIONS}:, beat_stretch: [0.5, 0.25, 0.125].choose|, rpitch: rand(2)|, amp: rand(1)|, pan: rdist(1,0)|, decay: rand(1)|, release: rand(2)|, cutoff: rand(130)|, cutoff_attack: rand(1)|, cutoff_decay: rand(1)|, cutoff_release: rand(2)|, res: rand(1)|, rate: [1, 1, 1, -1].choose
 {SYNTH_OPTIONS}:{SYNTH_OPTIONS}{SYNTH_OPTIONS}| | | |
 {SYNTH_OPTIONS}:, release: rand(2)|, release: {INT_1_4}|, slide: [0.25, 0.5, 1].choose|, env_curve: {INT_1_4}
 {SYNTH_MOD_OPTIONS}:{SYNTH_MOD_OPTIONS}{SYNTH_MOD_OPTIONS}|
@@ -55,9 +55,6 @@
 {FX}:nhpf
 {FX}:nlpf
 {FX}:normaliser
-{FX}:nrbpf
-{FX}:nrhpf
-{FX}:nrlpf
 {FX}:octaver
 {FX}:pan
 {FX}:panslicer
@@ -72,17 +69,16 @@
 {FX}:wobble
 {SYNTH}:beep
 {SYNTH}:blade
-{SYNTH}:bnoise, amp: 0.2
-{SYNTH}:cnoise, amp: 0.2
+{SYNTH}:bnoise, amp: rand(0.2)
+{SYNTH}:cnoise, amp: rand(0.2)
 {SYNTH}:dark_ambience
 {SYNTH}:dpulse
 {SYNTH}:dsaw
 {SYNTH}:dull_bell
 {SYNTH}:fm
-{SYNTH}:gnoise, amp: 0.2
+{SYNTH}:gnoise, amp: rand(0.2)
 {SYNTH}:growl
 {SYNTH}:hollow
-{SYNTH}:hoover
 {SYNTH}:mod_beep, amp: 0.3{SYNTH_MOD_OPTIONS}
 {SYNTH}:mod_dsaw, amp: 0.3{SYNTH_MOD_OPTIONS}
 {SYNTH}:mod_fm, amp: 0.3{SYNTH_MOD_OPTIONS}
@@ -90,9 +86,9 @@
 {SYNTH}:mod_saw, amp: 0.3{SYNTH_MOD_OPTIONS}
 {SYNTH}:mod_sine, amp: 0.3{SYNTH_MOD_OPTIONS}
 {SYNTH}:mod_tri, amp: 0.3{SYNTH_MOD_OPTIONS}
-{SYNTH}:noise, amp: 0.2
+{SYNTH}:noise, amp: rand(0.2)
 {SYNTH}:piano
-{SYNTH}:pnoise, amp: 0.2
+{SYNTH}:pnoise, amp: rand(0.2)
 {SYNTH}:pretty_bell
 {SYNTH}:prophet
 {SYNTH}:pulse
@@ -114,6 +110,7 @@
 {BPM_FRACTION_SEQUENCE_CONTINUE}:, {BPM_FRACTION_SIMPLE}, {BPM_FRACTION_SIMPLE}{BPM_FRACTION_SEQUENCE_CONTINUE}|
 {BPM_FRACTION_EXTREME}:16|8|4|0.25|0.125
 {INT_1_4}:1|2|3|4
+{INT_2_4}:2|3|4
 {INT_4_7}:4|5|6|7
 {INT_6_9}:6|7|8|9
 {INT}:1|2|3|4|5|6|7|8|9|0
