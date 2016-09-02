@@ -44,7 +44,6 @@
 {FX}:bpf
 {FX}:compressor
 {FX}:distortion
-{FX}:echo
 {FX}:flanger
 {FX}:gverb
 {FX}:hpf
@@ -66,14 +65,20 @@
 {FX}:rlpf
 {FX}:slicer
 {FX}:tanh
+{FX}:vowel
+{FX}:whammy
 {FX}:wobble
 {SYNTH}:beep
 {SYNTH}:blade
 {SYNTH}:bnoise, amp: rand(0.2)
+{SYNTH}:chipbass
+{SYNTH}:chiplead
+{SYNTH}:chipnoise, amp: rand(0.2)
 {SYNTH}:cnoise, amp: rand(0.2)
 {SYNTH}:dark_ambience
 {SYNTH}:dpulse
 {SYNTH}:dsaw
+{SYNTH}:dtri
 {SYNTH}:dull_bell
 {SYNTH}:fm
 {SYNTH}:gnoise, amp: rand(0.2)
