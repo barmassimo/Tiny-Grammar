@@ -20,54 +20,51 @@
 {RANDOM_SEED}:use_random_seed {INT+}{INT}{INT}{INT}{INT}\n
 {PLAY_SLEEP}:{POW_2}.times do\n{PLAY}\n{SLEEP_SHORT}\nend\n
 {PLAY_SLEEP}:{POW_2}.times do\n{SLEEP_SHORT}\n{PLAY}\nend\n
+{PLAY_SLEEP}:{POW_2}.times do\n{PLAY}\n{SLEEP_SHORT}\nend\n
+{PLAY_SLEEP}:{POW_2}.times do\n{SLEEP_SHORT}\n{PLAY}\nend\n
+{PLAY_SLEEP}:with_fx :{FX}, mix: 0.{INT}{INT} do\n{PLAY_SLEEP}\nend
 {PLAY_SLEEP}:{PLAY_SLEEP}\n\n{PLAY_SLEEP}
-{PLAY}:with_fx :{FX} do\n{PLAY}\nend
 {PLAY}:sample :{SAMPLE}
-{PLAY}:s = (scale song_note, song_scale, num_octaves: {INT_1_4}).take({POW_2})\nsynth :{SYNTH}, note: s.choose{SYNTH_OPTIONS} if rand > 0.{INT_1_4}
+{PLAY}:s = (scale song_note, song_scale, num_octaves: {INT_1_4}).take({POW_2})\nsynth :{SYNTH}, note: s.choose{SYNTH_OPTIONS} if rand > 0.{INT}{INT}
+{PLAY}:s = (scale song_note, song_scale, num_octaves: {INT_1_4}).take({POW_2})\nsynth :{SYNTH}, note: s.choose{SYNTH_OPTIONS} if one_in({POW_2})
 {SCALE}:minor_pentatonic|major_pentatonic|{SCALE_LESS_FREQUENT}
 {SCALE_LESS_FREQUENT}:minor|major|diatonic|ionian|major|dorian|phrygian|lydian|mixolydian|aeolian|minor|locrian|hex_major6|hex_dorian|hex_phrygian|hex_major7|hex_sus|hex_aeolian|minor_pentatonic|yu|major_pentatonic|gong|egyptian|shang|jiao|zhi|ritusen|whole_tone|whole|chromatic|harmonic_minor|melodic_minor_asc|hungarian_minor|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|super_locrian|hirajoshi|kumoi|neapolitan_major|bartok|bhairav|locrian_major|ahirbhairav|enigmatic|neapolitan_minor|pelog|augmented2|scriabin|harmonic_major|melodic_minor_desc|romanian_minor|hindu|iwato|melodic_minor|diminished2|marva|melodic_major|indian|spanish|prometheus|diminished|todi|leading_whole|augmented|purvi|chinese|lydian_minor
 {SAMPLE}:{SAMPLE_NAME}{SAMPLE_OPTIONS}
 {SAMPLE_NAME}:ambi_soft_buzz|bass_hit_c|bd_808|bd_ada|bd_boom|bd_fat|bd_gas|bd_haus|bd_klub|bd_pure|bd_sone|bd_tek|bd_zome|bd_zum|drum_bass_hard|drum_bass_soft|drum_cymbal_closed|drum_cymbal_pedal|drum_cymbal_soft|drum_heavy_kick|drum_snare_soft|drum_tom_lo_soft|drum_tom_mid_soft|elec_beep|elec_blip|elec_blip2|elec_blup|elec_bong|elec_cymbal|elec_filt_snare|elec_flip|elec_fuzz_tom|elec_hi_snare|elec_hollow_kick|elec_lo_snare|elec_mid_snare|elec_ping|elec_plip|elec_pop|elec_snare|elec_soft_kick|elec_tick|elec_triangle|elec_twang|elec_twip|perc_swash|sn_dolf|sn_zome|tabla_dhec|tabla_ghe1|tabla_ke1|tabla_ke2|tabla_ke3|tabla_re|tabla_tas1|tabla_te1|tabla_te2|tabla_te_m|tabla_te_ne|vinyl_hiss
-{SAMPLE_OPTIONS}:{SAMPLE_OPTIONS}{SAMPLE_OPTIONS}| | 
-{SAMPLE_OPTIONS}:, beat_stretch: [0.5, 0.25, 0.125].choose|, rpitch: rand(2)|, amp: rand(1)|, pan: rdist(1,0)|, decay: rand(1)|, release: rand(2)|, cutoff: rand(130)|, cutoff_attack: rand(1)|, cutoff_decay: rand(1)|, cutoff_release: rand(2)|, res: rand(1)|, rate: [1, 1, 1, -1].choose
+{SAMPLE_OPTIONS}:{SAMPLE_OPTIONS}{SAMPLE_OPTIONS}
+{SAMPLE_OPTIONS}:, beat_stretch: [0.5, 0.25, 0.125].choose|, rpitch: rand(2)|, amp: rand(1)|, pan: rdist(1,0)|, decay: rand(1)|, release: rand(2)|, cutoff: rrand(60, 120)|, cutoff_attack: rand(1)|, cutoff_decay: rand(1)|, cutoff_release: rand(2)|, res: rand(1)|, rate: [1, 1, 1, -1].choose|,rate: (rrand 0.125, 1.5)
 {SYNTH_OPTIONS}:{SYNTH_OPTIONS}{SYNTH_OPTIONS}| | | |
 {SYNTH_OPTIONS}:, release: rand(2)|, release: {INT_1_4}|, slide: [0.25, 0.5, 1].choose|, env_curve: {INT_1_4}
 {SYNTH_MOD_OPTIONS}:{SYNTH_MOD_OPTIONS}{SYNTH_MOD_OPTIONS}|
 {SYNTH_MOD_OPTIONS}:, mod_phase: [0.25, 0.5, 1].choose|, env_curve: [1, 2, 3, 4, 6, 7].choose|, mod_range: [1, 2, 3, 4, 5, 6, 7].choose
 {PLAY_OPT}:{PLAY_OPT}{PLAY_OPT}|{PLAY_OPT_TERMINAL}|{PLAY_OPT_TERMINAL}|{PLAY_OPT_TERMINAL}
 {PLAY_OPT_TERMINAL}:, amp: rand(0.5)|, pan: rdist(1, 0)
-{FX}:reverb, room: 1
-{FX}:echo, phase: {BPM_FRACTION}, mix: 0.{INT} 
-{FX}:slicer, phase: [0.25, 0.5].choose
-{FX}:band_eq
-{FX}:bitcrusher
-{FX}:bpf
-{FX}:compressor
-{FX}:distortion
-{FX}:flanger
-{FX}:gverb
-{FX}:hpf
-{FX}:ixi_techno
-{FX}:krush
-{FX}:level
-{FX}:lpf
-{FX}:nhpf
-{FX}:nlpf
-{FX}:normaliser
-{FX}:octaver
-{FX}:pan
-{FX}:panslicer
-{FX}:pitch_shift
-{FX}:rbpf
-{FX}:reverb
-{FX}:rhpf
-{FX}:ring_mod
-{FX}:rlpf
-{FX}:slicer
-{FX}:tanh
-{FX}:vowel
-{FX}:whammy
-{FX}:wobble
+{FX}:wobble|reverb, room: 1|echo, phase: {BPM_FRACTION}, decay: {INT_1_4}|distortion|slicer, phase: [0.25, 0.5].choose|{FX_LESS_FREQUENT}
+{FX_LESS_FREQUENT}:band_eq
+{FX_LESS_FREQUENT}:bitcrusher
+{FX_LESS_FREQUENT}:bpf
+{FX_LESS_FREQUENT}:compressor
+{FX_LESS_FREQUENT}:flanger
+{FX_LESS_FREQUENT}:gverb
+{FX_LESS_FREQUENT}:hpf
+{FX_LESS_FREQUENT}:ixi_techno
+{FX_LESS_FREQUENT}:krush
+{FX_LESS_FREQUENT}:level
+{FX_LESS_FREQUENT}:lpf
+{FX_LESS_FREQUENT}:nhpf
+{FX_LESS_FREQUENT}:nlpf
+{FX_LESS_FREQUENT}:normaliser
+{FX_LESS_FREQUENT}:octaver
+{FX_LESS_FREQUENT}:pan
+{FX_LESS_FREQUENT}:panslicer
+{FX_LESS_FREQUENT}:pitch_shift
+{FX_LESS_FREQUENT}:rbpf
+{FX_LESS_FREQUENT}:rhpf
+{FX_LESS_FREQUENT}:ring_mod
+{FX_LESS_FREQUENT}:rlpf
+{FX_LESS_FREQUENT}:tanh
+{FX_LESS_FREQUENT}:vowel
+{FX_LESS_FREQUENT}:whammy
 {SYNTH}:beep
 {SYNTH}:blade
 {SYNTH}:bnoise, amp: rand(0.2)
