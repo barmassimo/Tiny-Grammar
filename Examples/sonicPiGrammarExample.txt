@@ -1,7 +1,7 @@
 # This is a grammar definition for Sonic Pi, the "Live Coding Music Synth" created by Sam Aaron.
 # See http://sonic-pi.net for more info.
 #
-# Code generated for Sonic Pi v2.9+
+# Code generated for Sonic Pi v2.10+
 #
 {SONG}:{PREAMBLE}{INITIAL_SETUP}{GLOBAL_FX}{LIVE_LOOP_MAIN}{LIVE_LOOP_SEQUENCE}{GLOBAL_FX_END}
 {PREAMBLE}:# This nonsense song is generated randomly by TinyGrammar,\n# a sentence generator created by Massimo Barbieri:\n# https://github.com/barmassimo/Tiny-Grammar (source code)\n# http://massimobarbieri.it/en/SonicPiGenerator (live demo)\n\n# You can play it with Sonic Pi, the "Live Coding Music Synth"\n# created by Sam Aaron: http://sonic-pi.net\n\n
@@ -81,13 +81,7 @@
 {SYNTH}:gnoise, amp: rand(0.2)
 {SYNTH}:growl
 {SYNTH}:hollow
-{SYNTH}:mod_beep, amp: 0.3{SYNTH_MOD_OPTIONS}
-{SYNTH}:mod_dsaw, amp: 0.3{SYNTH_MOD_OPTIONS}
-{SYNTH}:mod_fm, amp: 0.3{SYNTH_MOD_OPTIONS}
-{SYNTH}:mod_pulse, amp: 0.3{SYNTH_MOD_OPTIONS}
-{SYNTH}:mod_saw, amp: 0.3{SYNTH_MOD_OPTIONS}
-{SYNTH}:mod_sine, amp: 0.3{SYNTH_MOD_OPTIONS}
-{SYNTH}:mod_tri, amp: 0.3{SYNTH_MOD_OPTIONS}
+{SYNTH}:{SYNTH_MOD},  amp: 0.5{SYNTH_MOD_OPTIONS}
 {SYNTH}:noise, amp: rand(0.2)
 {SYNTH}:piano
 {SYNTH}:pnoise, amp: rand(0.2)
@@ -102,6 +96,7 @@
 {SYNTH}:tb303
 {SYNTH}:tri
 {SYNTH}:zawa
+{SYNTH_MOD}:mod_beep|mod_dsaw|mod_fm|mod_pulse|mod_saw|mod_sine|mod_tri
 {DIGITS}:{INT}{INT}{INT}{INT}{INT}
 {SLEEP}:sleep {BPM_FRACTION}
 {SLEEP_SHORT}:sleep [1, 0.5, 0.25, 0.125].choose|sleep [0.5, 0.25].choose|sleep [0.5, 0.25, 0.125].choose
