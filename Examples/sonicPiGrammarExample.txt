@@ -5,7 +5,7 @@
 #
 {SONG}:{PREAMBLE}{INITIAL_SETUP}{GLOBAL_FX}{LIVE_LOOP_MAIN}{LIVE_LOOP_SEQUENCE}{GLOBAL_FX_END}
 {PREAMBLE}:# This nonsense song is generated randomly by TinyGrammar,\n# a sentence generator created by Massimo Barbieri:\n# https://github.com/barmassimo/Tiny-Grammar (source code)\n# http://massimobarbieri.it/en/SonicPiGenerator (live demo)\n\n# You can play it with Sonic Pi, the "Live Coding Music Synth"\n# created by Sam Aaron: http://sonic-pi.net\n\n
-{INITIAL_SETUP}:use_debug false\nuse_bpm {INT_4_7}0\n{RANDOM_SEED}song_scale = :{SCALE}\nsong_note = :{NOTE}{INT_2_4}\n\n
+{INITIAL_SETUP}:use_debug false\n{RANDOM_SEED}use_bpm {INT_4_7}0\nsong_scale = :{SCALE}\nsong_note = :{NOTE}{INT_2_4}\n\n
 {GLOBAL_FX}:with_fx :compressor do # global FX\n\n
 {GLOBAL_FX_END}:\nend # global FX\n
 {LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}
