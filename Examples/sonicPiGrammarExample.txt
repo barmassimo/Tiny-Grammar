@@ -5,7 +5,7 @@
 #
 {SONG}:{PREAMBLE}{INITIAL_SETUP}{GLOBAL_FX}{LIVE_LOOP_MAIN}{LIVE_LOOP_SEQUENCE}{GLOBAL_FX_END}
 {PREAMBLE}:# This nonsense song is generated randomly by TinyGrammar,\n# a sentence generator created by Massimo Barbieri:\n# https://github.com/barmassimo/Tiny-Grammar (source code)\n# http://massimobarbieri.it/en/SonicPiGenerator (live demo)\n\n# You can play it with Sonic Pi, the "Live Coding Music Synth"\n# created by Sam Aaron: http://sonic-pi.net\n\n
-{INITIAL_SETUP}:use_debug false\n{RANDOM_SEED}use_bpm {INT_4_7}0\nsong_scale = :{SCALE}\nsong_note = :{NOTE}{INT_2_4}\n\n
+{INITIAL_SETUP}:use_debug false\n{RANDOM_SEED}use_bpm {INT_4_7}0\nsong_scale = :{SCALE}\nsong_note = :{NOTE}{INT_2_4}\nsong_amp = 1\n\n
 {GLOBAL_FX}:with_fx :compressor do # global FX\n\n
 {GLOBAL_FX_END}:\nend # global FX\n
 {LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}
@@ -16,7 +16,7 @@
 {LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}\n{LIVE_LOOP_SEQUENCE}
 {LIVE_LOOP_SEQUENCE}:{LIVE_LOOP}\n{LIVE_LOOP_SEQUENCE}
 {LIVE_LOOP_MAIN}:# main live loop start\nlive_loop :loop_main do\n{SLEEP_MAIN} # empty loop used for sync\nend\n\n
-{LIVE_LOOP}:# live loop start\nlive_loop :loop_{DIGITS} do\nsync :loop_main\n{RANDOM_SEED}{PLAY_SLEEP}\nend\n
+{LIVE_LOOP}:# live loop start\nlive_loop :loop_{DIGITS} do\nwith_fx :level, amp:song_amp do\nsync :loop_main\n{RANDOM_SEED}{PLAY_SLEEP}\nend\nend\n
 {RANDOM_SEED}:use_random_seed {INT+}{INT}{INT}{INT}{INT}\n
 {PLAY_SLEEP}:{POW_2}.times do\n{PLAY}\n{SLEEP_SHORT}\nend\n
 {PLAY_SLEEP}:{POW_2}.times do\n{SLEEP_SHORT}\n{PLAY}\nend\n
