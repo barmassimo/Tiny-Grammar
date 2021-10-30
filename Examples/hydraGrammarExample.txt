@@ -1,6 +1,7 @@
 # This is a grammar definition for Hydra, a "platform for live coding visuals" created by Olivia Jack.
 # See https://ojack.xyz/ for more info.
 #
+
 {PROGRAM}:{INFO}{SOURCE}{RENDER}
 {SOURCE}:{SOURCE}.{FUNCTIONS}
 {SOURCE}:{SOURCE}.{FUNCTIONS}
