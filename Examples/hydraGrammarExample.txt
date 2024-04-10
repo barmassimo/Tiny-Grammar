@@ -20,7 +20,7 @@
 {FUNCTION}:{OPERATOR}
 {FUNCTION}:{OPERATOR}
 
-{INFO}:// Random code for Hydra by Olivia Jack - hydra.ojack.xyz\n// Generated with Hydra random generator - massimobarbieri.it/en/HydraGenerator\n
+{INFO}:// Random code for Hydra, a "platform for live coding visuals" - hydra.ojack.xyz\n// Generated with Hydra random generator - massimobarbieri.it/en/HydraGenerator\n\n
 
 # Functions
 {FUNCTION}:brightness({FLOAT_0_1})
